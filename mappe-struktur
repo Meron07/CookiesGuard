@@ -1,0 +1,9 @@
+cookieguard/
+ ├─ manifest.json
+ ├─ service-worker.js
+ ├─ content.js
+ ├─ inject.css
+ ├─ popup.html
+ ├─ popup.js
+ ├─ popup.css
+ └─ rules.js

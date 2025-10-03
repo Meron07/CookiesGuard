@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>CookieGuard</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <header>
+    <h1>CookieGuard</h1>
+    <label class="toggle">
+      <input type="checkbox" id="onoff" checked />
+      <span></span>
+    </label>
+  </header>
+
+  <section id="status">
+    <div class="gauge">
+      <div class="circle"><span id="pct">--%</span></div>
+      <div>Compliance</div>
+    </div>
+    <div class="facts">
+      <div><b>Biggest concern:</b> <span id="biggest">–</span></div>
+      <div><b id="violN">0</b> potential violations. <a id="readmore" href="#" target="_blank">Read more</a></div>
+      <div id="partial">–</div>
+    </div>
+  </section>
+
+  <section id="actions">
+    <button id="btnDownload">Download Report</button>
+    <button id="btnSend" class="warn">Send Report</button>
+  </section>
+
+  <section id="list"></section>
+
+  <script src="popup.js" type="module"></script>
+</body>
+</html>

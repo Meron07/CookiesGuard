@@ -1,0 +1,16 @@
+{
+  "manifest_version": 3,
+  "name": "CookieGuard",
+  "version": "0.1.0",
+  "description": "Oppdager cookie- og samtykke-brudd, mørke mønstre og genererer rapport.",
+  "permissions": ["storage", "cookies", "activeTab", "scripting"],
+  "host_permissions": ["<all_urls>"],
+  "action": { "default_popup": "popup.html", "default_title": "CookieGuard" },
+  "background": { "service_worker": "service-worker.js" },
+  "content_scripts": [{
+    "matches": ["<all_urls>"],
+    "js": ["rules.js", "content.js"],
+    "css": ["inject.css"],
+    "run_at": "document_idle"
+  }]
+}

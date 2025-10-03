@@ -1,0 +1,2 @@
+/* Kan brukes til å highlighte funn i DOM i demo */
+.cookieguard-highlight { outline: 2px dashed #e53935 !important; outline-offset: 2px; }

@@ -1,0 +1,76 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>CookieGuard</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <header>
+    <h1>CookieGuard</h1>
+    <nav>
+      <a href="#" data-section="summary">🏠</a>
+      <a href="#" data-section="readmore">ℹ️</a>
+      <a href="#" data-section="settings">⚙️</a>
+    </nav>
+  </header>
+
+  <!-- SUMMARY -->
+  <section id="summary" class="active">
+    <b>CookieGuard:</b> Several major cookie breaches found.<br>
+    <span class="desc">
+      Deceptive UI, Layered reject button<br>
+      Long life time <a href="#" class="read-more" data-section="readmore">Read More</a>
+    </span>
+
+    <div class="gauge">
+      <div class="circle" id="circle">33</div>
+      <div>Score</div>
+    </div>
+
+    <div class="btn-row">
+      <button id="downloadBtn" class="download">Last ned rapport</button>
+      <button id="reportBtn" class="warn">Varsle Datatilsynet</button>
+    </div>
+  </section>
+
+  <!-- READ MORE -->
+  <section id="readmore">
+    <h2>Violations Found</h2>
+    <div id="violations"></div>
+  </section>
+
+  <!-- SETTINGS -->
+  <section id="settings">
+    <h2>Innstillinger</h2>
+    <div class="setting-row">
+      <span>Deaktiver for denne siden</span>
+      <label class="switch">
+        <input type="checkbox" id="disableForSite">
+        <span class="slider round"></span>
+      </label>
+    </div>
+    <div class="setting-row">
+      <span>Automatisk Popup</span>
+      <label class="switch">
+        <input type="checkbox" id="automaticPopup">
+        <span class="slider round"></span>
+      </label>
+    </div>
+    <div class="setting-row">
+      <span>Automatisk Rapport</span>
+      <label class="switch">
+        <input type="checkbox" id="autoReport">
+        <span class="slider round"></span>
+      </label>
+    </div>
+
+    <div class="btn-row">
+      <button id="downloadBtn" class="download">Last ned rapport</button>
+      <button id="saveSettingsBtn" class="save">Lagre innstillinger</button>
+    </div>
+  </section>
+
+  <script src="popup.js"></script>
+</body>
+</html>

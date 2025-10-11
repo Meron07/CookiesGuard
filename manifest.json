@@ -1,0 +1,21 @@
+{
+  "manifest_version": 3,
+  "name": "CookieGuard",
+  "version": "1.0",
+  "description": "Detect and report cookie policy violations and deceptive consent patterns.",
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "permissions": [
+    "activeTab",
+    "cookies",
+    "storage",
+    "scripting",
+    "tabs",
+    "downloads",
+    "storage.sync"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ]
+}

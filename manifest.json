@@ -12,8 +12,7 @@
     "storage",
     "scripting",
     "tabs",
-    "downloads",
-    "storage.sync"
+    "downloads"
   ],
   "host_permissions": [
     "<all_urls>"

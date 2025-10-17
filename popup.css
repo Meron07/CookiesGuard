@@ -185,6 +185,7 @@ button {
   font-weight: 500;
   font-size: 14px;
   width: 48%;
+  transition: all 0.3s ease;
 }
 
 .btn-row {
@@ -195,6 +196,44 @@ button {
 
 .save { background: #3348ff; color: white; }
 .warn { background: #f04a63; color: white; }
+
+/* Cookie consent buttons */
+.btn-allow {
+  background: #2ecc71;
+  color: white;
+  border: 1px solid #27ae60;
+}
+
+.btn-allow:hover {
+  background: #27ae60;
+}
+
+.btn-reject {
+  background: #e74c3c;
+  color: white;
+  border: 1px solid #c0392b;
+}
+
+.btn-reject:hover {
+  background: #c0392b;
+}
+
+/* Legitimate interest indicator */
+.legitimate-interest {
+  background: #f8f9fa;
+  border-left: 4px solid #ffd700;
+  padding: 8px 12px;
+  margin: 8px 0;
+  font-size: 13px;
+  color: #666;
+  display: flex;
+  align-items: center;
+}
+
+.legitimate-interest::before {
+  content: "ℹ️";
+  margin-right: 8px;
+}
 
 /* Violations */
 .item {

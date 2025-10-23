@@ -1,11 +1,39 @@
+/* Root variables for responsive sizing */
+:root {
+  --zoom-level: 1;
+  --base-width: 340px;
+  --base-font: 14px;
+}
+
 body {
-  width: 340px;
+  width: 380px;
+  height: 600px;
   font: 14px/1.5 system-ui, sans-serif;
   margin: 0;
   background: #f6f8fb;
   color: #111;
+  overflow: hidden;
+  position: relative;
 }
 
+/* Content wrapper with zoom applied */
+.content-wrapper {
+  transform: scale(var(--zoom-level));
+  transform-origin: top left;
+  transition: transform 0.3s ease;
+  width: calc(100% / var(--zoom-level));
+  height: calc(100% / var(--zoom-level));
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+/* Responsive container */
+.container {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Header should NOT be affected by zoom */
 header {
   background: #3348ff;
   color: white;
@@ -22,22 +50,100 @@ h1 {
   font-weight: 600;
 }
 
+nav {
+  display: flex;
+  align-items: center;
+  gap: 0;
+}
+
 nav a {
   color: white;
   margin-left: 10px;
   text-decoration: none;
   cursor: pointer;
   font-size: 15px;
+  transition: transform 0.2s;
 }
 
-section { display: none; padding: 14px; opacity: 0; transition: opacity 0.3s ease; }
+nav a:hover {
+  transform: scale(1.1);
+}
+
+/* Zoom controls styling - Professional design */
+.zoom-controls {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-left: 12px;
+  padding-left: 12px;
+  border-left: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.zoom-btn {
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: white;
+  width: 24px;
+  height: 24px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  padding: 0;
+  line-height: 1;
+}
+
+.zoom-btn:hover {
+  background: rgba(255, 255, 255, 0.25);
+  border-color: rgba(255, 255, 255, 0.5);
+  transform: scale(1.05);
+}
+
+.zoom-btn:active {
+  transform: scale(0.95);
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.zoom-display {
+  color: white;
+  font-size: 11px;
+  font-weight: 600;
+  min-width: 38px;
+  text-align: center;
+  opacity: 0.9;
+  cursor: pointer;
+  padding: 2px 4px;
+  border-radius: 3px;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+.zoom-display:hover {
+  background: rgba(255, 255, 255, 0.1);
+  opacity: 1;
+}
+
+section { 
+  display: none; 
+  padding: 14px; 
+  opacity: 0; 
+  transition: opacity 0.3s ease; 
+}
 section.active { display: block; opacity: 1; }
 
-.desc { color:#444; }
+.desc { 
+  color:#444; 
+  font-size: 14px;
+}
 .read-more {
   color: #3348ff;
   text-decoration: none;
   cursor: pointer;
+  font-size: 14px;
 }
 .read-more:hover {
   text-decoration: underline;
@@ -51,6 +157,7 @@ section.active { display: block; opacity: 1; }
   border-radius: 4px;
   cursor: pointer;
   transition: background-color 0.2s;
+  font-size: 14px;
 }
 
 .btn-row button.download:hover {
@@ -174,6 +281,58 @@ button.save.saved {
   margin: 0 auto 8px;
   font-weight: 600;
   font-size: 18px;
+  transition: border-color 0.3s ease;
+}
+
+.gauge .circle.excellent {
+  border-top-color: #2ecc71;
+  border-right-color: #2ecc71;
+}
+
+.gauge .circle.good {
+  border-top-color: #3498db;
+  border-right-color: #3498db;
+}
+
+.gauge .circle.fair {
+  border-top-color: #f39c12;
+  border-right-color: #f39c12;
+}
+
+.gauge .circle.poor {
+  border-top-color: #e67e22;
+  border-right-color: #e67e22;
+}
+
+.gauge .circle.critical {
+  border-top-color: #e74c3c;
+  border-right-color: #e74c3c;
+  border-bottom-color: #e74c3c;
+}
+
+/* Score Details */
+.score-details {
+  background: #f8f9fa;
+  border-radius: 8px;
+  padding: 12px;
+  margin: 15px 0;
+}
+
+.score-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 6px 0;
+  font-size: 13px;
+}
+
+.score-label {
+  color: #666;
+  font-weight: 500;
+}
+
+.score-value {
+  color: #333;
+  font-weight: 600;
 }
 
 /* Buttons */

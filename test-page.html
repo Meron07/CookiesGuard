@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cookie Banner Test Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .content {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+        }
+        
+        /* Cookie Banner with Violations */
+        #cookie-banner {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: white;
+            padding: 20px;
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+            border-top: 3px solid #3348ff;
+        }
+        
+        .cookie-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .cookie-buttons {
+            margin-top: 15px;
+            display: flex;
+            gap: 10px;
+        }
+        
+        /* Accept button - bright and prominent */
+        .btn-accept {
+            background: #2ecc71;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+        
+        /* Reject as a small link (violation: link instead of button) */
+        .link-reject {
+            color: #666;
+            text-decoration: underline;
+            font-size: 12px;
+            cursor: pointer;
+            align-self: center;
+        }
+        
+        /* Settings button for layering */
+        .btn-settings {
+            background: #e0e0e0;
+            color: #666;
+            border: none;
+            padding: 8px 16px;
+            font-size: 14px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        
+        .checkbox-group {
+            margin: 15px 0;
+            padding: 10px;
+            background: #f9f9f9;
+            border-radius: 4px;
+        }
+        
+        .checkbox-item {
+            margin: 8px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <h1>🍪 Cookie Banner Test Page</h1>
+        <p>This page is designed to test the CookieGuard extension detection capabilities.</p>
+        
+        <h2>Violations on this page:</h2>
+        <ul>
+            <li>✅ <strong>Different Colored Buttons:</strong> Accept button is bright green, reject is small grey link</li>
+            <li>✅ <strong>Link Instead of Button:</strong> Reject is a text link, not a proper button</li>
+            <li>✅ <strong>Layering:</strong> "Cookie Settings" requires another click (hypothetical)</li>
+            <li>✅ <strong>Pre-ticked Boxes:</strong> Marketing cookies are pre-selected below</li>
+            <li>✅ <strong>Legitimate Interest:</strong> Text mentions "legitimate interest"</li>
+            <li>✅ <strong>Lack of Information:</strong> Minimal cookie information provided</li>
+        </ul>
+        
+        <h2>How to Test:</h2>
+        <ol>
+            <li>Make sure CookieGuard extension is loaded and enabled</li>
+            <li>Open browser DevTools (F12) and go to Console tab</li>
+            <li>Reload this page</li>
+            <li>Look for <span style="color: #3348ff; font-weight: bold;">[CookieGuard]</span> messages in console</li>
+            <li>Click the CookieGuard extension icon to see the score</li>
+            <li>Check that violations are detected correctly</li>
+        </ol>
+        
+        <div style="background: #fff3cd; padding: 15px; border-radius: 4px; margin-top: 20px;">
+            <strong>💡 Expected Result:</strong>
+            <ul>
+                <li>Console should show: "[CookieGuard] Found 1 cookie banner(s)"</li>
+                <li>Console should show: "[CookieGuard] Detected X violations" (where X > 0)</li>
+                <li>Extension badge should show a number</li>
+                <li>Popup should show a score less than 100</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Cookie Banner with Multiple Violations -->
+    <div id="cookie-banner" class="cookie-banner">
+        <div class="cookie-content">
+            <h3>🍪 We use cookies</h3>
+            <p>We use cookies and similar technologies to improve your experience. We use cookies for analytics and marketing based on our legitimate interest.</p>
+            
+            <div class="checkbox-group">
+                <div class="checkbox-item">
+                    <label>
+                        <input type="checkbox" checked disabled>
+                        <strong>Essential Cookies</strong> (Always Active)
+                    </label>
+                </div>
+                <div class="checkbox-item">
+                    <label>
+                        <input type="checkbox" checked id="analytics">
+                        <strong>Analytics Cookies</strong> - Track your usage
+                    </label>
+                </div>
+                <div class="checkbox-item">
+                    <label>
+                        <input type="checkbox" checked id="marketing">
+                        <strong>Marketing Cookies</strong> - Show personalized ads
+                    </label>
+                </div>
+            </div>
+            
+            <div class="cookie-buttons">
+                <button class="btn-accept" onclick="acceptCookies()">Accept All Cookies</button>
+                <button class="btn-settings" onclick="alert('This would open settings page (layering)')">Cookie Settings</button>
+                <a href="#" class="link-reject" onclick="rejectCookies(); return false;">Reject</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function acceptCookies() {
+            document.getElementById('cookie-banner').style.display = 'none';
+            console.log('Cookies accepted');
+        }
+        
+        function rejectCookies() {
+            document.getElementById('cookie-banner').style.display = 'none';
+            console.log('Cookies rejected');
+        }
+        
+        // Log for debugging
+        console.log('%c🍪 Test page loaded - Cookie banner should be visible', 'color: #3348ff; font-weight: bold; font-size: 14px');
+        console.log('Waiting for CookieGuard extension to detect violations...');
+    </script>
+</body>
+</html>

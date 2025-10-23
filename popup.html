@@ -9,23 +9,40 @@
   <header>
     <h1>CookieGuard</h1>
     <nav>
-      <a href="#" data-section="summary">🏠</a>
-      <a href="#" data-section="readmore">ℹ️</a>
-      <a href="#" data-section="settings">⚙️</a>
+      <a href="#" data-section="summary" title="Home">🏠</a>
+      <a href="#" data-section="readmore" title="Details">ℹ️</a>
+      <a href="#" data-section="settings" title="Settings">⚙️</a>
+      <div class="zoom-controls">
+        <button id="zoomOut" class="zoom-btn" title="Zoom Out (Ctrl -)">−</button>
+        <span id="zoomDisplay" class="zoom-display">100%</span>
+        <button id="zoomIn" class="zoom-btn" title="Zoom In (Ctrl +)">+</button>
+      </div>
     </nav>
   </header>
 
-  <!-- SUMMARY -->
-  <section id="summary" class="active">
-    <b>CookieGuard:</b> Several major cookie breaches found.<br>
-    <span class="desc">
-      Deceptive UI, Layered reject button<br>
-      Long life time <a href="#" class="read-more" data-section="readmore">Read More</a>
+  <div class="content-wrapper">
+    <!-- SUMMARY -->
+    <section id="summary" class="active">
+    <b>CookieGuard:</b> <span id="summaryText">Analyzing cookie banner...</span><br>
+    <span class="desc" id="summaryDesc">
+      <span id="violationsList">Checking for violations...</span>
+      <a href="#" class="read-more" data-section="readmore">Read More</a>
     </span>
 
     <div class="gauge">
-      <div class="circle" id="circle">33</div>
-      <div>Score</div>
+      <div class="circle" id="circle">--</div>
+      <div>Compliance Score</div>
+    </div>
+
+    <div class="score-details">
+      <div class="score-item">
+        <span class="score-label">Dark Pattern Score:</span>
+        <span class="score-value" id="darkPatternScore">--</span>
+      </div>
+      <div class="score-item">
+        <span class="score-label">Compliance Issues:</span>
+        <span class="score-value" id="complianceIssues">--</span>
+      </div>
     </div>
 
     <div class="btn-row">
@@ -70,7 +87,9 @@
       <button id="saveSettingsBtn" class="save">Lagre innstillinger</button>
     </div>
   </section>
+  </div>
 
+  <script src="scoring.js"></script>
   <script src="popup.js"></script>
 </body>
 </html>
